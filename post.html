@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cab Route Guide | Airport Taxi Service Bangalore</title>
+<meta name="description" content="Cab route guide from Bangalore — fares, distance and travel tips. Book with our AI assistant or call us.">
+<meta name="keywords" content="bangalore cab route, taxi fare bangalore, outstation trip guide, airport transfer guide bangalore">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://airporttaxiservice.in/blog">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Airport Taxi Service">
+<meta property="og:title" content="Cab Route Guide | Airport Taxi Service">
+<meta property="og:description" content="Fares, distance and travel tips for cab routes from Bangalore.">
+<meta property="og:image" content="https://airporttaxiservice.in/assets/img/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0f1830">
+<link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-nav="/blog">
+<div id="site-header"></div>
+
+<header class="post-hero" id="postHero">
+  <div class="container container-tight">
+    <nav aria-label="breadcrumb"><ol class="breadcrumb" style="--bs-breadcrumb-divider:'/'"><li class="breadcrumb-item"><a href="/" style="color:#c7d2ea">Home</a></li><li class="breadcrumb-item"><a href="blog" style="color:#c7d2ea">Guides</a></li><li class="breadcrumb-item active text-white" id="crumb">Loading…</li></ol></nav>
+    <h1 class="fw-bold" id="postTitle"><span class="skeleton d-inline-block" style="height:28px;width:70%">&nbsp;</span></h1>
+    <p class="mb-0" id="postPrice" style="color:#c7d2ea"></p>
+  </div>
+</header>
+
+<section>
+  <div class="container container-tight">
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div id="postBody" class="post-body">
+          <div class="skeleton mb-2" style="height:16px"></div>
+          <div class="skeleton mb-2" style="height:16px;width:95%"></div>
+          <div class="skeleton mb-2" style="height:16px;width:88%"></div>
+          <div class="skeleton" style="height:200px;margin-top:16px"></div>
+        </div>
+        <div class="p-4 rounded mt-4" style="background:var(--bg);border:1px solid var(--line)">
+          <h5 class="fw-bold mb-2"><i class="bi bi-chat-dots-fill text-warning"></i> Book this route</h5>
+          <p class="text-muted mb-3">Ask the assistant for a live fare and book in a minute.</p>
+          <button class="btn btn-gold" onclick="ATSopenChat()">Ask the assistant</button>
+          <a class="btn btn-outline-navy ms-2" href="tel:+918884466448">Call to Book</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="feat">
+          <h5 class="fw-bold">More routes</h5>
+          <div id="morePosts" class="mt-2 small">
+            <div class="skeleton mb-2" style="height:16px"></div><div class="skeleton mb-2" style="height:16px"></div><div class="skeleton" style="height:16px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+  function ATSopenChat(){ var b=document.querySelector('#nt-chatbot-embed'); if(b&&b.shadowRoot){var l=b.shadowRoot.querySelector('.launcher'); if(l) l.click();} }
+  var slug = new URLSearchParams(location.search).get('slug') || '';
+
+  if (!slug) { location.replace('/blog'); }
+
+  var PAGE_URL = 'https://airporttaxiservice.in/post?slug=' + encodeURIComponent(slug);
+
+  ATSsite.api.get(slug).then(function (res) {
+    var p = res.data;
+    var metaTitle = p.meta.title || p.title;
+    var metaDesc  = p.meta.description || ('Cab route guide from Bangalore: ' + p.title + '. Fares, distance and booking.');
+
+    document.title = metaTitle + ' | Airport Taxi Service';
+    setMeta('description', metaDesc);
+    setMeta('keywords', p.meta.keywords || 'bangalore cab route, taxi fare, outstation cab, airport transfer');
+    setCanonical(PAGE_URL);
+
+    setProp('og:title', metaTitle);
+    setProp('og:description', metaDesc);
+    setProp('og:url', PAGE_URL);
+    if (p.banner_image) setProp('og:image', p.banner_image);
+    setMeta('twitter:title', metaTitle);
+    setMeta('twitter:description', metaDesc);
+
+    addJsonLd({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": p.title,
+      "description": metaDesc,
+      "image": p.banner_image ? [p.banner_image] : undefined,
+      "datePublished": p.created_at || undefined,
+      "author": { "@type": "Organization", "name": "Airport Taxi Service" },
+      "publisher": { "@type": "Organization", "name": "Airport Taxi Service", "url": "https://airporttaxiservice.in/" },
+      "mainEntityOfPage": PAGE_URL
+    });
+    addJsonLd({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://airporttaxiservice.in/" },
+        { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://airporttaxiservice.in/blog" },
+        { "@type": "ListItem", "position": 3, "name": p.title, "item": PAGE_URL }
+      ]
+    });
+
+    document.getElementById('crumb').textContent = p.title;
+    document.getElementById('postTitle').textContent = p.title;
+    if (p.price_start_from) document.getElementById('postPrice').textContent = 'Fares from ₹' + p.price_start_from;
+    if (p.banner_image) {
+      document.getElementById('postHero').style.backgroundImage =
+        'linear-gradient(rgba(15,24,48,.86),rgba(15,24,48,.92)), url(' + p.banner_image + ')';
+      document.getElementById('postHero').style.backgroundSize = 'cover';
+      document.getElementById('postHero').style.backgroundPosition = 'center';
+    }
+    document.getElementById('postBody').innerHTML = p.description || '<p class="text-muted">Details coming soon. Ask the assistant for a live fare on this route.</p>';
+  }).catch(function () {
+    setMeta('robots', 'noindex, follow');
+    document.title = 'Route not found | Airport Taxi Service';
+    document.getElementById('postTitle').textContent = 'Route not found';
+    document.getElementById('crumb').textContent = 'Not found';
+    document.getElementById('postBody').innerHTML = '<p class="text-muted">We couldn\'t find that guide. <a href="blog">Browse all routes</a> or ask the assistant for a fare.</p>';
+  });
+
+  ATSsite.api.list({ per_page: 8 }).then(function (res) {
+    var box = document.getElementById('morePosts');
+    var items = (res.data || []).filter(function (p) { return p.page_slug !== slug; }).slice(0, 6);
+    if (!items.length) { box.innerHTML = '<span class="text-muted">More guides coming soon.</span>'; return; }
+    box.innerHTML = items.map(function (p) {
+      return '<a class="d-block py-1" href="post?slug=' + encodeURIComponent(p.page_slug) + '">' + ATSsite.escapeHtml(p.title) + '</a>';
+    }).join('');
+  }).catch(function(){ document.getElementById('morePosts').innerHTML = '<span class="text-muted">Unavailable right now.</span>'; });
+
+  function setMeta(name, val) {
+    var m = document.querySelector('meta[name="' + name + '"]');
+    if (!m) { m = document.createElement('meta'); m.name = name; document.head.appendChild(m); }
+    m.content = val;
+  }
+  function setProp(prop, val) {
+    var m = document.querySelector('meta[property="' + prop + '"]');
+    if (!m) { m = document.createElement('meta'); m.setAttribute('property', prop); document.head.appendChild(m); }
+    m.content = val;
+  }
+  function setCanonical(href) {
+    var l = document.querySelector('link[rel="canonical"]');
+    if (!l) { l = document.createElement('link'); l.rel = 'canonical'; document.head.appendChild(l); }
+    l.href = href;
+  }
+  function addJsonLd(obj) {
+    var s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.textContent = JSON.stringify(obj, function (k, v) { return v === undefined ? undefined : v; });
+    document.head.appendChild(s);
+  }
+</script>
+<script src="https://nammataxi.com/embed/chatbot.js" data-brand="airporttaxi" data-source="airporttaxi" defer></script>
+</body>
+</html>
