@@ -8,6 +8,10 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # Dynamic sitemap (static pages + posts from the API)
+  RewriteRule ^sitemap\.xml$ sitemap.php [L]
+  RewriteRule ^\.sitemap-cache\.xml$ - [F,L]
+
   # Redirect /index.html (or /dir/index.html) -> / for real browser requests
   RewriteCond %{THE_REQUEST} \s/(([^/]+/)*)index\.html[\s?] [NC]
   RewriteRule ^ /%1 [R=301,L]
